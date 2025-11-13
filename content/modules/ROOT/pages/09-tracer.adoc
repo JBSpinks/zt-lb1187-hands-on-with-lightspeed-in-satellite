@@ -1,3 +1,5 @@
+:imagesdir: ../assets/images
+
 == Enable the Tracer service on RHEL hosts
 
 Often when software is updated, services on a host must be restarted
@@ -203,8 +205,7 @@ image::allhostsagain.png[allhostsagain]
 
 [arabic]
 . Select your hosts (rhel1 and rhel2).
-. Click `+Select Action+`.
-. Select `+Schedule Remote Job+`.
+. Click `+Schedule a job+`.
 
 .Select RHEL systems
 image::scheduleremotejob.png[all host]
