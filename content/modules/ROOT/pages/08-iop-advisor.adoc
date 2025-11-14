@@ -43,8 +43,8 @@ This particular advisory can be remediated with an ansible playbook.
 
 Let’s remediate all the problems found by advisor.
 
-1) Select the `+rhel1+` and `+rhel2+` hosts.
-2) Click `+Remediate+`.
+. Select the `+rhel1+` and `+rhel2+` hosts. Do not select `+satellite.lab+`.
+. Click `+Remediate+`.
 
 .Remediate hosts
 image::advisor_remediate.png[../assets/advisor_remediate]

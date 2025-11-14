@@ -121,6 +121,5 @@ reboot.
 When you view the `+Traces+` menu, the list will be empty signifying no
 services require restart.
 
-Repeat the procedure to resolve Traces with the remaining host.
 ====
 =====
