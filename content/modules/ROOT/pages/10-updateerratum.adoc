@@ -1,3 +1,5 @@
+:imagesdir: ../assets/images
+
 == Update Errata
 
 Red Hat Product Errata are advisories on bug fixes, security, and
@@ -81,17 +83,6 @@ image::completejobstatus.png[../assets/completejobstatus]
 
 Go to Hosts > All Hosts.
 
-.All hosts
-image::allhostsagain.png[../assets/allhostsagain]
-
-All hosts managed by Satellite will still display in an orange font
-signifying there are status warnings. This is because the Tracer
-application has detected services that require restarting. If the kernel
-or systemd has been updated, the hosts will require a reboot.
-
-.Traces status
-image::tracesorange.png[../assets/tracesorange]
-
 ====
 =====
 
@@ -109,7 +100,7 @@ Tracer will detect which of these services need to be restarted.
 Click on a host (it doesn’t matter which, you’ll have to perform this
 procedure twice.)
 
-.Error status
+.Host
 image::errorhost.png[error host]
 
 Do the following to resolve the traces.
