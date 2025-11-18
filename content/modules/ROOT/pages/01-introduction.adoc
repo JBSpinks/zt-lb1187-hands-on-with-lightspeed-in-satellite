@@ -1,3 +1,5 @@
+:imagesdir: ../assets/images
+
 == Introduction to Satellite Basics 6.18
 
 The lab environment consists of the following
@@ -38,4 +40,4 @@ image::webuilogin.png[../assets/webuilogin]
 You will be taken to the main dashboard.
 
 .Satellite WebGUI dashboard
-image::main-menu.png[../assets/main-menu]
+image::dashboard.png[../assets/dashboard]
