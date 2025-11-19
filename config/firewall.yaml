@@ -8,6 +8,11 @@ egress:
       - podSelector:
           matchLabels:
             kubevirt.io: virt-launcher
+      - ipBlock:
+          cidr: 38.145.32.22/32
+      - ipBlock:
+          cidr: 38.145.32.23/32
+    
 ingress:
   - from:
       - podSelector:
