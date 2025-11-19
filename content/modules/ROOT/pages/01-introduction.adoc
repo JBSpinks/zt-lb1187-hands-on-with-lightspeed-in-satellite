@@ -1,3 +1,5 @@
+:imagesdir: ../assets/images
+
 == Introduction to Satellite Basics 6.18
 
 The lab environment consists of the following
@@ -15,6 +17,9 @@ Satellite has been preinstalled and installation is out of scope for
 this lab.
 
 Click on the tab labelled Satellite Web UI as shown in the image below.
+
+.Satellite Web UI tab
+image::satellite-webui-tab.png[../assets/satellite-webui-tab]
 
 You’ll need the following credentials to log into the Satellite Web UI.
 
