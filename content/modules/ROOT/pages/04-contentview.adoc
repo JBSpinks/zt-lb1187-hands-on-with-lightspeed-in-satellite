@@ -51,6 +51,14 @@ need this value in step 6 of this lab.
 .Create content view menu
 image::createcv.png[../assets/createcv]
 
+====
+=====
+
+=====
+.Add repositories to the content view
+[%collapsible]
+====
+
 Click on `+Show repositories+`.
 
 .Show repos
@@ -65,13 +73,20 @@ You'll add repositories to the content view using the following steps:
 .Add repos
 image::addrepos.png[../assets/addrepos]
 
-[arabic, start=3]
-. Click `+Publish New Version+` to publish the content view.
+====
+=====
+
+=====
+.Publish the content view
+[%collapsible]
+====
+
+Click `+Publish New Version+` to publish the content view.
 
 .Publish a new version of the content view
 image::publish.png[../assets/publish]
 
-[arabic, start=4]
+
 . Click the sliding `+Promote+` button.
 . Select the lifecycle environment you wish to promote the content view
 to. In this case it is `+Test+`.
@@ -81,3 +96,13 @@ to. In this case it is `+Test+`.
 image::publishwizard.png[../assets/publishwizard]
 
 Review the details and then click `+Finish+`.
+
+.Review the details
+image::publish-review.png[../assets/publish-review]
+
+It will take anywhere from a few seconds to a few minutes to publish the content view, depending on the number of changes made.
+
+image::publishing-content-view.png[../assets/publishing-content-view]
+
+====
+=====
