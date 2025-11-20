@@ -41,7 +41,7 @@ RHEL10
 [arabic, start=2]
 . Select the `+Test+` environment.
 . Select the `+RHEL10+` content view
-. Click `+save+`.
+. Click `+Save+`.
 
 IMPORTANT: The name of the activation key will be used to add hosts. The
 names must match or the hosts will not be registered.

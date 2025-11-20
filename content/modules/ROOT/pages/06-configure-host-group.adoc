@@ -111,6 +111,11 @@ WARNING: Parameter names are case sensitive. `+firewall+` must be in lower case.
 IMPORTANT: This property is a JSON format version of the YAML ansible
 properties found in an ansible playbook.
 
+[arabic, start=5]
+. Click `+Activation Keys+`.
+
+.Host group parameters (for ansible roles)
+image::createhostgroup3.png[3]
 ====
 =====
 
@@ -118,11 +123,6 @@ properties found in an ansible playbook.
 .Assign an activation key
 [%collapsible]
 ====
-[arabic, start=5]
-. Click `+Activation Keys+`.
-
-.Host group parameters (for ansible roles)
-image::createhostgroup3.png[3]
 
 We will assign the `+RHEL10+` activation key to this group.
 
