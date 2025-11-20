@@ -1,6 +1,6 @@
 :imagesdir: ../assets/images
 
-== Introduction to Satellite Basics 6.18
+== Introduction to Red Hat Satellite 6.18 Basics
 
 The lab environment consists of the following
 

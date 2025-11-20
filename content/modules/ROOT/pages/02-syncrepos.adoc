@@ -9,7 +9,7 @@ network. ##*Please do not synchronize the repositories*##. Please feel free to s
 IMPORTANT: In order to speed up the lab, the RHEL 9 BaseOS and AppStream repos have been pre-synchronized. If you are familiar with this process please feel free to skip to the next assignment. If you decide to run through this procedure, please do not attempt to re-synchronize the repositories.
 
 =====
-.Red Hat Repositories
+.Red Hat Repositories - FOR DOCUMENTATION PURPOSES ONLY
 [%collapsible]
 ====
 
@@ -46,7 +46,7 @@ workloads and use cases.
 =====
 
 =====
-.Select repositories
+.Select repositories - FOR DOCUMENTATION PURPOSES ONLY
 [%collapsible]
 ====
 
@@ -73,7 +73,7 @@ image::2022-08-11_09-02-27.gif[../assets/2022-08-11_09-02-27]
 =====
 
 =====
-.Initiate synchronization
+.Initiate synchronization - FOR DOCUMENTATION PURPOSES ONLY
 [%collapsible]
 ====
 

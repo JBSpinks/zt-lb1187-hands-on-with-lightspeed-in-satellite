@@ -34,8 +34,8 @@ image::installable-errata.png[installable radio box]
 
 Let’s install all the Installable Errata to our two hosts.
 
-.Select all of the Errata we just filtered.
-.Click `+Apply Erratum+`.
+. Select all of the Errata we just filtered.
+. Click `+Apply Erratum+`.
 
 .Select all installable errata
 image::errata-select-apply.png[select all installable errata]
@@ -74,7 +74,7 @@ Tracer will detect which of these services need to be restarted.
 [%collapsible]
 ====
 
-Click on the host `+rhel1+`.
+In the sidebar menu click on `+Hosts+`, `+All Hosts+`, and then click on the host `+rhel1+`.
 
 .Host
 image::errorhost.png[error host]

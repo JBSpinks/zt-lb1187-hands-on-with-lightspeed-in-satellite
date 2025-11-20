@@ -24,7 +24,7 @@ image::allhostsagain.png[all hosts]
 Next we’ll do the following.
 
 [arabic]
-. Select both hosts.
+. Select both `+rhel1+` and `+rhel2+` hosts.
 . Click on the down arrow next to `+Schedule a job+`.
 
 .Down arrow
