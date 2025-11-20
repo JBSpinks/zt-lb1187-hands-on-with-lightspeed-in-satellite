@@ -20,6 +20,6 @@ link.
 * https://access.redhat.com/support/policy/updates/satellite[Red Hat
 Satellite Product lifecycle]
 
-Please leave feedback here.
+If you have any feedback, please let us know.
 
-* https://red.ht/satellite-labs-feedback[Feedback discussion]
+* https://github.com/rhpds/zt-satellite-basics/issues[File a GitHub issue]
