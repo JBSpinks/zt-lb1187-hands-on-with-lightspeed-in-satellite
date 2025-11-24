@@ -56,31 +56,22 @@ image::main-menu.png[../assets/main-menu]
 
 NOTE: Red Hat Lightspeed was formerly known as Red Hat Insights.  In Satellite 6.17 the UI will read Insights. This is expected and will change to Red Hat Lightspeed in Satellite 6.18 and beyond.
 
-You will see `Recommendations` and `Vulnerability`.  +
-[start=4]
-. Select `Recommendations`.
+You will see `Recommendations` and `Vulnerability`.
 
 image::Sat_Insights_Connected_Menu.png[link=self, window=blank, width=100%]
 
-Depending on how long your lab has been running, the page might be empty - We want to sync the Recommendations with the ones on the Hybrid Cloud Console.
-
-[start=5]
-. Locate the Remediate button in the upper right.  Next to that are three vertical dots - click the three dots and select `Sync recommendations`.
-
-image::Sat_Insights_Connected_Sync_zoomed_v2.png[link=self, window=blank, width=100%]
-
-If your page was already populated you may not see any difference.  If your page was blank, after a few seconds the view will update and advisor recommendations will be displayed in the Satellite UI.  +
-These are the same ones that you would see in the advisor service on the Hybrid Cloud Console.
-In this instance the analysis is being done on the Hybrid Cloud Console and the results are being synchronized with your Red Hat Satellite.
-
-WARNING: While you see results from both hosts, only work on `node-{guid}-1.example.com` in this module.  You  will use `node-{guid}-2.example.com` in the next module.
+[start=4]
+. Select `Recommendations`.
 
 ====
 =====
 
-=== Performing an analysis
+=====
+.Performing an analysis
+[%collapsible]
+====
 
-While in self-hosted mode, you can manually perform a system analysis by running the insights-client command on the host. +
+While in self-hosted mode, you can manually perform a system analysis by running the insights-client command on the host.
 This should already be scheduled to be done automatically, but for the purposes of the lab we will go ahead and log into the second RHEL host and manually run this command.
 
 WARNING: Skipping this step will cause a failure in a later exercise.
@@ -108,7 +99,14 @@ image::self-managed_insights-client_output.png[link=self, window=blank, width=10
 
 NOTE: Due to the tech preview status of this feature, the insights-client will still include output information as if it is connected to console.redhat.com. No information is actually sent to the Hybrid Cloud Console.
 
-=== Viewing the results
+====
+=====
+
+=====
+.Viewing the results
+[%collapsible]
+====
+
 Now that you have performed the analysis on the host, you can see the results in the Satellite user environment.  +
 To validate that no data was sent, let’s first go to the Hybrid Cloud Console and check the timestamp of the last data packet transmission.
 
@@ -150,23 +148,18 @@ In the left hand navigation bar, click Insights -> Recommendations. +
 You should notice that the `The postgresql database performance decreases when the tuned best practices are not applied` recommendation no longer appears.  +
 No synchronization is required since this was processed locally.
 
-=== Updates to the list of Recommendations
+====
+=====
+
+=====
+.Updates to the list of Recommendations
+[%collapsible]
+====
+
 In Red Hat Lightspeed, at the Hybrid Cloud Console, new recommendations are added weekly or more frequently if needed.
 With Red Hat Lightspeed advisor in Satellite, new recommendations are delivered with container updates.  When you upgrade your Satellite server to the latest release you will need to update the container image to get the latest recommendations and any updates to the advisor engine itself.
 
-=== Changing back to the connected experience
-
-NOTE: This section is informational only.  These are not steps for you to take in the lab, but this is a commonly asked question that we wanted to include.
-
-If you decide that you want to switch back to the connected experience, this is very simple to do.
-Log into the Satellite terminal and run the command:
-`satellite-installer --foreman-plugin-rh-cloud-enable-iop-advisor-engine false`
-
-This will disable the Red Hat Lightspeed advisor in Satellite functionality and enable the Satellite to send data to Red Hat and the Hybrid Cloud Console.
-To have your systems report to Red Hat Lightspeed on the Hybrid Cloud Console, on each host you will need to register those systems by running the command:
-`insights-client --register`
-
-Satellite also contains a built-in playbook for insights-client if you have imported it. +
-This is the `RedHatInsights.insights-client` ansible role that you can run on the hosts.
+====
+=====
 
 This module is complete.
