@@ -2,8 +2,8 @@
 # Single Point of Truth for Lab Information
 
 lab:
-  name: "Red Hat Satellite Basics 6.17"
-  shortname: "zt-satellite-basics-6-17"
+  name: "LB1187 Hands on with Red Hat Lightspeed and Satellite"
+  shortname: "zt-lb1187-hands-on-with-lightspeed-in-satellite"
   maintainer: "Matthew Yee (myee@redhat.com)"
 
   description:

@@ -1,6 +1,6 @@
 ---
 site:
-  title: "Red Hat Satellite Basics 6.18"
+  title: "LB1187 Hands on with lightspeed and Satellite"
   url: https://github.com/rhpds/showroom_template_zero
   start_page: modules::01-introduction.adoc
 
