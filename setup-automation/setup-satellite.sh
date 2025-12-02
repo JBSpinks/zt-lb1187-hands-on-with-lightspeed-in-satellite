@@ -1,5 +1,5 @@
 #!/bin/bash
-#cd /root
+cd /root
 
 tee ~/config.yml << EOF
 ---
