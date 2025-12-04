@@ -60,6 +60,11 @@
     shell: "sh -x /tmp/runtime-scripts/{{ module_dir }}/{{ module_stage }}-{{ ansible_host }}.sh > /tmp/runtime-scripts/{{ module_dir }}/{{ module_stage }}-{{ ansible_host }}.log 2>&1"
     become: true
     register: r_result
+    environment:
+      GUID: "{{ lookup('ansible.builtin.env', 'GUID') }}"
+      DOMAIN: "{{ lookup('ansible.builtin.env', 'GUID') }}"
+      BASTION_USER: "{{ lookup('ansible.builtin.env', 'BASTION_USER') }}"
+      BASTION_PASSWORD: "{{ lookup('ansible.builtin.env', 'BASTION_PASSWORD') }}"
 
   - name: Output script result
     ansible.builtin.debug:
