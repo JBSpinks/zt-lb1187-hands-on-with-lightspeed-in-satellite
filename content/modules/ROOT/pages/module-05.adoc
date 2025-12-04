@@ -1,10 +1,10 @@
 :imagesdir: ../assets/images
 
-= Red Hat Lightspeed vulnerability in Satellite
+= Red Hat Lightspeed vulnerability service in Red HatSatellite
 
 In this module you will explore the Red Hat Lightspeed vulnerability service in Satellite.
 
-The Red Hat Lightspeed vulnerability service is a technical preview feature and is not available in the lab environment.
+The Red Hat Lightspeed vulnerability service allows users to assess, triage, prioritize and remediate the most critical vulnerabilities affecting their servers with the built-in threat intelligence. The Red Hat Lightspeed vulnerability service is a technical preview feature.
 
 =====
 .View the vulnerabilities
