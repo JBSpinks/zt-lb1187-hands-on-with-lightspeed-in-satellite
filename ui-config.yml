@@ -29,4 +29,4 @@ tabs:
   - name: "rhel-${guid}-2.lab terminal"
     url: /wetty_rhel-${guid}-2/ssh/root
   - name: "rhel-${guid}-3.lab terminal"
-    url: /wetty_rhel-${guid}-3/ssh/root
+    url: /wetty_rhel-${guid}-3/
