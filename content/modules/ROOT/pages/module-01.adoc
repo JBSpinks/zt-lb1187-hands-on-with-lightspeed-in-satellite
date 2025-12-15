@@ -1,6 +1,6 @@
 :imagesdir: ../assets/images
 
-= Lab Environment Overview
+= Welcome to Infinicorp - we have tasks for you!
 
 image::lb1187_M1_Infinicorp_Logo.png[link=self, window=blank, width=100%]
 
@@ -16,7 +16,8 @@ In each location we have a manufacturing facility, datacenter, and office buildi
 
 Infinicorp has some challenges around addressing vulnerabilities and identifying systems that are not in alignment with various regulatory compliance policies. 
 
-For testing purposes, in your lab environment we have already provided for you:
+For testing purposes, in your lab environment we have already provided for you: +
+
 * In your connected environment a RHEL 9.6 host that is directly connected to Red Hat Lightspeed at the Hybrid Cloud Console
 * In your disconnected environment, a pre-configured Red Hat Satellite 6.18 which has one Red Hat Enterprise Linux (RHEL)10.1 hosts registered.  
 
@@ -31,11 +32,13 @@ We need to make sure the internet connected systems at Infinicorp are up to date
 
 We also need to make sure our newest versions of our satellite connected systems are in good shape before we start rolling out upgrades to the rest of the fleet.  You have the first two systems built off of the latest packages and we want to verify these are known good configurations and that there aren’t any critical vulnerabilities that need to be addressed. 
 
-For directly connected systems: 
-* Review the internet connected RHEL 9.7 system to identify if there are any common vulnerabilities and exposures (CVEs) that are critical which need to be addressed.
+For directly connected systems: +
+
+* Review the internet connected RHEL 9.7 system to identify if there are any common vulnerabilities and exposures (CVEs) that are critical or important which need to be addressed.
 * Evaluate the internet connected RHEL 9.7 system for compliance to the CIS Level 1 Server policy and identify what needs to be updated/changed to get the system into compliance.
 
-For Satellite connected systems:
+For Satellite connected systems: +
+
 * Review the Satellite connected 10.1 host to see if there are any recommendations to improve the reliability, performance, or security of the host.
 * Review the Satellite connected 10.1 host to see if there are any common vulnerabilities and exposures (CVEs) that are critical which need to be addressed.
 
@@ -43,7 +46,7 @@ Before we set you on this task, let’s take a few minutes to review some of the
 
 To help with RHEL management, there are two main products that you will be working with: + 
 
-* Red Hat Lightspeed (formerly known as Red Hat Insights).
+* Red Hat Lightspeed (formerly known as Red Hat Insights)
 * Red Hat Satellite
 
 https://www.redhat.com/en/lightspeed[Red Hat Lightspeed^] is an end-to-end system management tool that predicts risks across Red Hat platforms, recommends actions, and tracks costs. Red Hat Lightspeed uses AI-powered package recommendations and planning capabilities to provide targeted guidance on increasing your systems’ day-to-day efficiency. +
@@ -93,3 +96,5 @@ This page also will tell you how to do things like obfuscate data or perform a c
 It should be reiterated that you have complete control over what information Red Hat Lightspeed for RHEL gathers - while we have exposed the hostname and IP addresses of the systems in the lab, this information is easily obfuscated via a switch in the client.   Additional information can also be obfuscated including keywords, patterns, and specific files.
 
 Additional information can be found in the http://redhat.com/insightsfaq[Red Hat Lightspeed frequently asked questions document^].
+
+Continue onto the next module to begin your tasks, and welcome to Infinicorp!
