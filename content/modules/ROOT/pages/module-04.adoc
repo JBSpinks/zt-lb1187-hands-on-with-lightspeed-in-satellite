@@ -65,6 +65,7 @@ NOTE: Red Hat Lightspeed was formerly known as Red Hat Insights.  In Satellite 6
 
 You will see `Recommendations` and `Vulnerability`.
 
+.Red Hat Lightspeed in Satellite Menu
 image::Sat_Insights_Connected_Menu.png[link=self, window=blank, width=100%]
 
 [start=4]
@@ -98,6 +99,7 @@ insights-client
 
 Running the insights-client command will collect and upload data to Satellite which will run the advisor analysis locally.
 
+.Output of insights-client command
 image::self-managed_insights-client_output.png[link=self, window=blank, width=100%]
 
 NOTE: The insights-client will still include output information as if it is connected to console.redhat.com. No information is actually sent to the Hybrid Cloud Console.
@@ -147,11 +149,13 @@ Since the type is `Playbook` this means that there is an Ansible playbook availa
 
 To get more details you will need to select the issue.
 
+.Recommendation page
 image::decreased-security-advisor.png[]
 
 [start=2]
 . Click the issue. You'll be taken to a new page containing the details of the issue.
 
+.OpenSSH Recommendation details page
 image::decreased-security-advisor-details.png[]
 
 The details page gives you high level information about the risk that was found and links to a Knowledgebase article if you need to get more information about the issue.  +
@@ -170,6 +174,7 @@ You should go ahead and create a playbook that you can evaluate and send to the 
 
 . Select the hosts that are affected by the issue by clicking on the checkbox to the left of the host name.
 
+.Select affected systems
 image::selected-hosts.png[]
 
 [start=4]
@@ -179,6 +184,7 @@ In this case the default resolution is to set the ClientMaxAlive and ClientAlive
 . Click `Remediate`. +
 This will redirect you to Monitor → Jobs where you can see the job running that you just initiated. This job may take 2-5 minutes to complete. Wait for the results to show success. +
 
+.Remediation status page
 image::remediation-status.png[link=self, window=blank, width=100%]
 
 
