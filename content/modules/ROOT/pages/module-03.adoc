@@ -1,10 +1,12 @@
 :imagesdir: ../assets/images
 
+= Red Hat Lightspeed via the Hybrid Cloud Console - Evaluate regulatory compliance.
+
 Your next task is to evaluate the internet connected RHEL 9.7 system for compliance to the Center for Internet Security (CIS) Level 1 Server policy and identify what needs to be updated/changed to get the system into compliance.
 
 Red Hat Lightspeed includes a compliance service that helps with this task.
 
-The compliance service uses Open Source Security Compliance Solution (OpenSCAP) and the RHEL SCAP Security Guide (SSG) to evaluate systems for a variety of regulatory compliance policies like DISA STIG (Defense Information Systems Agency Security Technical Implementation Guide), PCI DSS (Payment Card Industry Data Security Standard), HIPAA (Health Insurance Portability and Accountability Act), CIS (Center for Internet Security), and several more. 
+The compliance service uses Open Security Content Automation Protocol (OpenSCAP) and the RHEL SCAP Security Guide (SSG) to evaluate systems for a variety of regulatory compliance policies like DISA STIG (Defense Information Systems Agency Security Technical Implementation Guide), PCI DSS (Payment Card Industry Data Security Standard), HIPAA (Health Insurance Portability and Accountability Act), CIS (Center for Internet Security), and several more. 
 
 Each policy is made up of a number of rules, and the compliance service enables you to define the policy from one of the standards, then tailor (change) the policy to meet your needs including disabling specific rules or changing specific values to better align with your organizational needs.
 
@@ -12,7 +14,7 @@ What we will need you to do is to create a CIS Level 1 Server policy then custom
 
 After you’ve created the policy you’ll log into the terminal of the RHEL server and run the command that performs a compliance scan and sends the results to the Hybrid Cloud Console. 
 
-You’ll then review the results and identify any changes that need to be made, if any, to bring the system into compliance with the policy.
+You’ll then review the results and identify any changes that need to be made to bring the system into compliance with the policy.
 
 Expand a section below to complete the tasks in that section.  
 Please complete each section in order.
@@ -71,18 +73,22 @@ This will look like the below image.
 .Creating a SCAP policy
 image::lb1187_M3_Create_CIS_Policy.png[link=self, window=blank, width=100%]
 
-Note: SCAP policies have dependencies on the version of RHEL.  Notice the `Supported OS versions` column.  Not all policies support all versions of RHEL.
+NOTE: SCAP policies have dependencies on the version of RHEL.  Notice the `Supported OS versions` column.  Not all policies support all versions of RHEL.
 
 [start=7]
 7. Click Next.
-8. Provide a policy name of: `{guid} CIS L1 Server Policy` 
+8. Provide a policy name of:
+[source,sh,role=execute]
+----
+`{guid} CIS L1 Server Policy` 
+----
 
 NOTE: Please name the policy as shown above. This will help with automated cleanup tasks.  
 
 [start=9]
 9. Optionally you can enter a description or business objective.  
 10. Red Hat Lightspeed allows you to set a compliance threshold.  This means that anything over the entered threshold is considered compliant even if some rules are not passed.  +
-Set the compliance threshold to `97`
+*Set the compliance threshold to `97`*
 11. Click Next.
 12. Locate and select your RHEL 9.7 host.  It may help to use the search filter. +
 Reminder: your system name is: `rhel-{guid}-1.lab` +
@@ -93,7 +99,13 @@ NOTE: Please only add your host to this policy.
 13. Click Next.
 14. In the `Rules` section of the wizard you can tailor your policy.  This means that you can customize the policy by unselecting rules or editing values.  + 
 One place where Infinicorp is more strict than the policy is that the maximum password age at Infinicorp is 45 days.  You need to tailor the policy to reflect this. 
-15. In the `Name` filter enter `Set Existing Passwords Maximum Age`.
+15. In the `Name` filter enter:
+[source,sh,role=execute]
+----
+`Set Existing Passwords Maximum Age`.
+----
+
+[start=16]
 16. Expand the resulting rule so that you can see the details. Scroll down to where you see the `Depends on values` as shown in the image below.
 
 .Tailoring Max Age value
@@ -101,7 +113,7 @@ image::lb1187_M3_Tailor_Max_Age.png[link=self, window=blank, width=100%]
 
 [start=17]
 17. Click the pencil icon beside `maximum password age: 60`.
-18. Enter a new value of 45 and click the check icon as shown in the image below.
+18. Enter a new value of *45* and click the check icon as shown in the image below.
 
 .Tailoring Max Age value
 image::lb1187_M3_Tailor_Max_Age_45.png[link=self, window=blank, width=100%]
@@ -112,7 +124,7 @@ We could have simply unchecked the rule if we didn’t want to evaluate this rul
 [start=19]
 19. Click Next.
 20. Review the policy and click Finish.
-21. Click `Return to application` to close the wizard.  In the list of policies you should see your newly created policies.  Use the filter by name and search for {guid} if you have issues locating it. +
+21. Click `Return to application` to close the wizard.  In the list of policies you should see your newly created policies.  Use the filter by name and search for `{guid}` if you have issues locating it. +
 
 With your policy created and tailored you are ready to move onto the next step - evaluate the RHEL host against your newly created policy. 
 
@@ -124,8 +136,10 @@ With your policy created and tailored you are ready to move onto the next step -
 [%collapsible]
 ====
 
-This RHEL 9.7 system was built using the image builder service in Red Hat Lightspeed.  As a part of the image build process Infinicorp identified that the system needed to be compliant to CIS Level 1 Server.  As a result it is expected that this system will be compliant, but there might still be improvements that can be made to the image.  
-Scanning the system will give us great insights into changes we can make for future images.
+This RHEL 9.7 system was built using the image builder service in Red Hat Lightspeed. + 
+As a part of the image build process Infinicorp identified that the system needed to be compliant to CIS Level 1 Server.  +
+As a result it is expected that this system will be compliant, but there might still be improvements that can be made to the image. + 
+Scanning the system will give us great insights into changes we can make for future images. +
 
 Red Hat Lightspeed uses an insights-client command on the host to perform the evaluation. 
 
@@ -141,12 +155,12 @@ NOTE: Though the name of Insights changed to Red Hat Lightspeed, packages, comma
 sudo insights-client --compliance
 ----
 
-Running the `insights-client --compliance` command will use openscap to scan the system and upload the resulting xccdf (eXtensible Configuration Checklist Description Format) file to the Hybrid Cloud Console for review.
+Running the `insights-client --compliance` command will use OpenSCAP to scan the system and upload the resulting xccdf (eXtensible Configuration Checklist Description Format) file to the Hybrid Cloud Console for review.
 
 .Evaluating compliance status
 image::lb1187_M3_EvaluateCompliance.png[../assets/lb1187_M3_EvaluateCompliance]
 
-NOTE: While the regular insights-client command runs daily as a systemd process, the `--compliance` command is not included in that daily run.  Once you deploy this on your systems you will want to schedule this to run on a recurring basis using cron or similar.  This is covered in more detail in the https://docs.redhat.com/en/documentation/red_hat_lightspeed/1-latest/html-single/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index#setting-recurring-scans_compliance-getting-started[documentation].
+NOTE: While the regular `insights-client` command runs daily as a systemd process, the `--compliance` command is not included in that daily run.  Once you deploy this on your systems you will want to schedule this to run on a recurring basis using cron or similar.  This is covered in more detail in the https://docs.redhat.com/en/documentation/red_hat_lightspeed/1-latest/html-single/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index#setting-recurring-scans_compliance-getting-started[documentation].
 
 Do not continue to the next step until this command has completed and returns to the terminal prompt as shown in the image above. This process can take anywhere from 1-5 minutes.
 
@@ -164,15 +178,15 @@ If not, go back to the section on logging into the Hybrid Cloud Console.
 We are going to pick back up in the compliance section where we left off.
 
 1. In the Hybrid Cloud Console go to Security → Compliance → Reports.  +
-If for some reason you closed the page, click this https://console.redhat.com/insights/compliance/reports[link] to go to the right place.
+If you closed the page, click this https://console.redhat.com/insights/compliance/reports[link] to go to the right place.
 
-2. Locate (do not click) your policy. It may help to use the filter at the top. +
+2. Locate (do not click) your policy. It may help to use the filter at the top to locate your policy. +
 Your policy should be named `{guid} CIS L1 Server Policy`.
 
 NOTE: If you did not run `insights-client --compliance` in the previous step, or if the operation is still in progress, your policy will not display here.  Policies do not display reports until at least one system is reporting.
 
 [start=3]
-3. The Report will show you at a glance the name of the policy, the operating system, and the compliance rate.  You should be 100% compliant.  
+3. The report will show you at a glance the name of the policy, the operating system, and the compliance rate.  You should be 100% compliant.  
 Notice that there is an export symbol to the right of `Systems meeting compliance`. +
 It is possible to export a report from this page, but we are not going to do so at this time. +
 
@@ -185,18 +199,24 @@ image::lb1187_M3_CIS_Policy_report_summary.png[../assets/lb1187_M3_CIS_Policy_re
 .Report Details
 image::lb1187_M3_CIS_Policy_report_details.png[../assets/lb1187_M3_CIS_Policy_report_details]
 
-From here you can see your policy status.  Starting in the upper left, we have 100% of systems compliant to the policy.  +
+From here you can see your policy status. + 
+Starting in the upper left, we have 100% of systems compliant to the policy.  +
 The only conditions that are showing are compliant and non-compliant, but there are several possible conditions: +
 
-* Compliant system - Passing with the specified threshold percentage
-* Non-compliant system - not passing with the specified threshold percentage
-* Unsupported - If a system is using a version of the SCAP Security Guide (SSG) that is either too old OR too new, the system will report itself as unsupported.  There is a https://access.redhat.com/articles/6644131[full support matrix available].
-* Not reporting - The system is assigned to the policy, but has not yet been evaluated for compliance.   
+* `Compliant` - Passing with the specified threshold percentage
+* `Non-compliant` - not passing with the specified threshold percentage
+* `Unsupported` - If a system is using a version of the SCAP Security Guide (SSG) that is either too old OR too new, the system will report itself as unsupported.  There is a https://access.redhat.com/articles/6644131[full support matrix available].
+* `Not reporting` - The system is assigned to the policy, but has not yet been evaluated for compliance.   
 
 The last two conditions are not displayed since you don’t have any systems in those conditions (compliant and non-compliant are always shown). +
-However, these conditions are great to be aware of.  It is common for someone for example to `dnf upgrade` and update the ssg package to the latest version.  That latest version may not be compatible with an older version of RHEL and the results can be deceptive.  Rather than giving a deceptive or potentially incorrect score, the compliance report will report as unsupported while still giving you a rules failed number. +
+However, these conditions are great to be aware of. + 
+It is common for someone for example to `dnf upgrade` and update the ssg package to the latest version. + 
+That latest version may not be compatible with an older version of RHEL and the results can be deceptive. + 
+Rather than giving a deceptive or potentially incorrect score, the compliance report will report as unsupported while still giving you a rules failed number. +
 
-Not reporting is also a huge help in large environments - If you have 5000 systems that you expect to be help to the CIS policy and only 4990 are reporting it might otherwise be difficult to know that those last 10 systems aren’t being scanned.  The compliance report will tell you if a system isn’t reporting.  There are also tabs below for `Reporting` and `Never reported` where you can easily get a list of these systems. 
+`Not reporting` is also a huge help in large environments - If you have 5000 systems that you expect to be help to the CIS policy and only 4990 are reporting it might otherwise be difficult to know that those last 10 systems aren’t being scanned.  +
+The compliance report will tell you if a system isn’t reporting.  +
+There are also tabs below for `Reporting` and `Never reported` where you can easily get a list of these systems. 
 
 Looking at the bottom of the page, we can see the system that you scanned. +
 In this case your system is compliant, with a compliance score of 99% and 7 failed rules. +
@@ -216,7 +236,7 @@ Next, you should take a look at what failed and see what can be improved. +
 [%collapsible]
 ====
 
-You know that your system is compliant to the CIS Level 1 server policy, but the system still has 7 failed rules. Take a look to see what you can improve on this system to send back to Infinicorp SecOps.
+You know that your system is compliant to the CIS Level 1 Server policy, but the system still has 7 failed rules. Take a look to see what you can improve on this system to send back to Infinicorp SecOps.
 
 Begin where you left off in the policy report.
 
@@ -250,7 +270,13 @@ This would be very useful for sending a list of failed rules to the SecOps team.
 Selecting a rule will enable the `Plan remediation` button.
 8. Click the `Plan remediation` button. + 
 This will open the `Remediate with Ansible` wizard.
-9. Name your playbook: `{guid} compliance fix` +
+9. Name your playbook:
+[source,sh,role=execute]
+----
+`{guid} compliance fix` +
+----
+
+[start=10]
 10. Click Next.
 11. Your system will be selected. +
 Reminder: your system name is: `rhel-{guid}-1.lab` +
