@@ -99,7 +99,13 @@ SecOps has asked for a report of how many systems are impacted by `CVE-2025-4345
 
 From the vulnerability page the default filter is `CVE` (located to the right of the empty checkbox in the image above).  You can type the CVE number in the search box OR even a common search term that might be present in the CVE description like `GTK`.   +
 
-1. In the search box type `43458`. +
+1. In the search box type: 
+[source,sh,role=execute]
+----
+43458
+----
+
+[start=2]
 2. This will return `CVE-2025-43458`. +
 Notice that a new filter chip has been added for `Search term: 43458` +
 3. In the row with the CVE ID you will see basic information about the CVE including the number of systems that are impacted by the CVE. +
@@ -116,7 +122,6 @@ NOTE: You may see a different Business risk or Status than `Not defined` or `Not
 `Business risk` is intended for you to be able to define a risk that is specific to your business - this CVE is tagged with a severity of moderate, but if you have a workload that is deeply affected by this vulnerability, then this may be a more critical issue for you.   +
 
 [start=5]
-
 5. Click `Actions` in the upper right. You will have the option to `Edit business risk`.  Click this option. +
 You can set the business risk to: 
 
@@ -191,7 +196,11 @@ NOTE: The following steps are for Conventional (RPM-DNF) based systems.  Immutab
 You can add this fix to an existing playbook or you can create a new playbook.  Red Hat Lightspeed defaults to `Create new playbook` which is what you are going to use. +
    
 [start=3]
-3. Name your playbook: `43458 fix {guid}` +
+3. Name your playbook:
+[source,sh,role=execute]
+----
+43458 fix {guid}
+----
 
 Reminder: your system name is: `rhel-{guid}-1.lab`
 
