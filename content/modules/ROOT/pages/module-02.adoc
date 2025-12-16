@@ -32,6 +32,7 @@ Password:
 rhdp*lightspeed2026!
 ----
 
+(Move onto the next section, but don’t leave this page.) +
 ====
 =====
 
@@ -80,8 +81,9 @@ image::Vuln_DefaultFilters.png[link=self, window=blank, width=100%]
 * The first filter chips show you only CVEs that affect `1 or more systems` in your infrastructure.  This could be a Conventional (RPM-DNF based) system or an Immutable (OSTree based) system.  
 * The second filter only shows you CVEs with an `Advisory Available`.  That means you are looking at vulnerabilities that you can fix.
 
-Combining these two filters together means that the initial focus is on CVEs that are affecting your system AND CVEs that you can remediate.
+Combining these two filters together means that the initial focus is on CVEs that are affecting your system AND CVEs that you can remediate. +
 
+(Move onto the next section, but don’t leave this page.) +
 ====
 =====
 
@@ -97,7 +99,13 @@ SecOps has asked for a report of how many systems are impacted by `CVE-2025-4345
 
 From the vulnerability page the default filter is `CVE` (located to the right of the empty checkbox in the image above).  You can type the CVE number in the search box OR even a common search term that might be present in the CVE description like `GTK`.   +
 
-1. In the search box type `43458`. +
+1. In the search box type: 
+[source,sh,role=execute]
+----
+43458
+----
+
+[start=2]
 2. This will return `CVE-2025-43458`. +
 Notice that a new filter chip has been added for `Search term: 43458` +
 3. In the row with the CVE ID you will see basic information about the CVE including the number of systems that are impacted by the CVE. +
@@ -114,7 +122,6 @@ NOTE: You may see a different Business risk or Status than `Not defined` or `Not
 `Business risk` is intended for you to be able to define a risk that is specific to your business - this CVE is tagged with a severity of moderate, but if you have a workload that is deeply affected by this vulnerability, then this may be a more critical issue for you.   +
 
 [start=5]
-
 5. Click `Actions` in the upper right. You will have the option to `Edit business risk`.  Click this option. +
 You can set the business risk to: 
 
@@ -163,7 +170,9 @@ You should know that the exported data is WYSIWYG (what you see is what you get)
 
 In other words, getting a list of systems impacted by a vulnerability takes just seconds - search for the CVE then export the list of impacted systems.
 
-You now have the info that SecOps has requested, but you know that Infinicorp SecOps is going to ask for a remediation playbook to fix the issue for approval.  You also see that Red Hat Lightspeed can generate a playbook for you.  
+You now have the info that SecOps has requested, but you know that Infinicorp SecOps is going to ask for a remediation playbook to fix the issue for approval.  You also see that Red Hat Lightspeed can generate a playbook for you.  +
+
+(Move onto the next section, but don’t leave this page.) +
 
 ====
 =====
@@ -187,7 +196,11 @@ NOTE: The following steps are for Conventional (RPM-DNF) based systems.  Immutab
 You can add this fix to an existing playbook or you can create a new playbook.  Red Hat Lightspeed defaults to `Create new playbook` which is what you are going to use. +
    
 [start=3]
-3. Name your playbook: `43458 fix {guid}` +
+3. Name your playbook:
+[source,sh,role=execute]
+----
+43458 fix {guid}
+----
 
 Reminder: your system name is: `rhel-{guid}-1.lab`
 
@@ -221,7 +234,9 @@ This playbook can help simplify the resolution of this issue - you could easily 
 9. Close the playbook and return to the Hybrid Cloud Console browser window.
 
 Now that you have both the list of systems affected by CVE-2025-43458 and a remediation playbook you send those back to your SecOps team for their review.  
-Now that this urgent task is taken care of, let’s go ahead and return to the original task of seeing what CVEs need addressed on the RHEL 9.7 host. 
+Now that this urgent task is taken care of, let’s go ahead and return to the original task of seeing what CVEs need addressed on the RHEL 9.7 host. +
+
+(Move onto the next section, but don’t leave this page.) +
 
 ====
 =====
@@ -293,16 +308,17 @@ image::lb1187_M2_CVE_wo_errata.png[lb1187_M2_CVE_wo_errata,85%,85%]
 The advisory column will tell you if the CVE has an advisory available to resolve the CVE.  
 
 [start=11]
-11. If you click the export button (just to the right of the Plan remediation button) you have the option to export this list into CSV or JSON formats.+
+11. If you click the export button (just to the right of the Plan remediation button) you have the option to export this list into CSV or JSON formats. +
 Again - you can get a list of all of the CVEs that impact a specific system very quickly.
 
 .Export button
-image::Insights_Export_Button.png[link=self, window=blank, width=10%]
-
+image::Insights_Export_Button.png[Insights_Export_Button,15%,15%]
 
 With this list of CVEs exported you now have a full picture of the Critical and Important CVEs that affect this RHEL 9.7 system and you can send that onto the SecOps team for their review.  
 
-While you’re investigating the vulnerabilities you can’t help but notice the reports section. Maybe some of these reports will help you provide critical information to SecOps in the future.  You should take a look while you’re here.
+While you’re investigating the vulnerabilities you can’t help but notice the reports section. Maybe some of these reports will help you provide critical information to SecOps in the future. + 
+You should take a look while you’re here. +
+(Move onto the next section, but don’t leave this page.) +
 
 ====
 =====
@@ -322,6 +338,7 @@ The report then breaks down the CVEs by CVSS (Common Vulnerability Scoring Syste
 This is a nice pre canned report that you can send to your management or SecOps team.  +
 4. Close the report and return to the reports page of the Hybrid Cloud Console. +
 
+(Move onto the next section, but don’t leave this page.) +
 ====
 =====
 
@@ -351,6 +368,7 @@ The PDF file will be downloaded via your browser.
 This report will show you the information that you selected - in this case all CVEs with a CVSS base score between 6.0 and 10 within the last 90 days. +
 4. When finished reviewing, close the report and return to the Hybrid Cloud Console.
 
+(Move onto the next section, but don’t leave this page.) +
 ====
 =====
 
@@ -381,7 +399,7 @@ Unsurprisingly, newer versions of RHEL have less CVEs. +
 ====
 =====
 
-If you want to see this work end-to-end including the remediation, please check out this https://app.arcade.software/share/Rj6M0j5j34kdlq5KGiAz?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true[interactive demo on Evaluating systems for Common Vulnerabilities and Exposures (CVEs)^]: +
+If you want to see remediation of a vulnerability work end-to-end, please check out this https://app.arcade.software/share/Rj6M0j5j34kdlq5KGiAz?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true[interactive demo on Evaluating systems for Common Vulnerabilities and Exposures (CVEs)^]: +
 
 
 With this exercise you have reviewed the internet connected RHEL 9.7 system to identify if there are any common vulnerabilities and exposures (CVEs) that are critical or important which need to be addressed. 
