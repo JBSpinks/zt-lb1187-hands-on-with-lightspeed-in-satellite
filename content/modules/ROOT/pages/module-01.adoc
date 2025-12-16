@@ -20,8 +20,8 @@ Infinicorp has some challenges around addressing vulnerabilities and identifying
 
 For testing purposes, in your lab environment we have already provided for you: +
 
-* In your connected environment a RHEL 9.6 host that is directly connected to Red Hat Lightspeed at the Hybrid Cloud Console
-* In your disconnected environment, a pre-configured Red Hat Satellite 6.18 which has one Red Hat Enterprise Linux (RHEL)10.1 hosts registered.  
+* In your connected environment a RHEL 9.7 host that is directly connected to Red Hat Lightspeed at the Hybrid Cloud Console
+* In your disconnected environment, a pre-configured Red Hat Satellite 6.18 which has one Red Hat Enterprise Linux (RHEL)10.1 host registered.  
 
 .Testing Environment
 image::lb1187_M1_Labinfra.png[link=self, window=blank, width=100%]
@@ -39,7 +39,7 @@ NOTE: For your convenience, the image above and all images in this lab can be op
 
 We need to make sure the internet connected systems at Infinicorp are up to date and compliant with regulatory compliance policies.  We also want to identify any critical vulnerabilities or other system configurations that need to be addressed.  
 
-We also need to make sure our newest versions of our satellite connected systems are in good shape before we start rolling out upgrades to the rest of the fleet.  You have the first two systems built off of the latest packages and we want to verify these are known good configurations and that there aren’t any critical vulnerabilities that need to be addressed. 
+We also need to make sure our newest versions of our Satellite connected systems are in good shape before we start rolling out upgrades to the rest of the fleet.  You have the first system built off of the latest packages and we want to verify this is a known good configuration and that there aren’t any critical vulnerabilities that need to be addressed. 
 
 For directly connected systems: +
 
@@ -51,7 +51,7 @@ For Satellite connected systems: +
 * Review the Satellite connected 10.1 host to see if there are any recommendations to improve the reliability, performance, or security of the host.
 * Review the Satellite connected 10.1 host to see if there are any common vulnerabilities and exposures (CVEs) that are critical which need to be addressed.
 
-Before we set you on this task, let’s take a few minutes to review some of the tools that you will be using today.  +
+Before we set you on these tasks, let’s take a few minutes to review some of the tools that you will be using today.  +
 
 To help with RHEL management, there are two main products that you will be working with: + 
 
@@ -62,7 +62,7 @@ https://www.redhat.com/en/lightspeed[Red Hat Lightspeed^] is an end-to-end syste
 
 https://www.redhat.com/en/technologies/management/satellite[Red Hat Satellite^] is an infrastructure management product specifically designed to keep Red Hat Enterprise Linux® environments and other Red Hat infrastructure running efficiently, with security, and compliant with various standards.+
 
-Starting at Red Hat Summit 2025, we announced that we would deliver Red Hat Lightspeed on premise delivered using Red Hat Satellite. +
+Starting at Red Hat Summit 2025, we announced that we would deliver Red Hat Lightspeed on premise using Red Hat Satellite. +
 
 ====
 =====
@@ -74,7 +74,7 @@ Starting at Red Hat Summit 2025, we announced that we would deliver Red Hat Ligh
 
 To help draw a distinction between Red Hat Lightspeed managed by Red Hat on the Hybrid Cloud Console and what you would manage in your own environment, throughout the lab guide you will see this on premise functionality referred to as `Red Hat Lightspeed in Satellite`. +
 
-With this option enabled, Red Hat Lightspeed has a series of containers that run on the Satellite to analyze and provide information about your environment. That analysis is done on the Satellite server, in containers, without sending any data to Red Hat.
+With this option enabled, Red Hat Lightspeed has a series of containers that run on the Satellite server to analyze and provide information about your environment. That analysis is done on the Satellite server, in containers, without sending any data to Red Hat.
 
 WARNING: Once Red Hat Lightspeed in Satellite is configured, your Satellite will not be able to send any data to the Hybrid Cloud Console - the local Satellite handles the analysis without sending any data. This means you cannot utilize any of the Hybrid Cloud Console capabilities and you are limited to only what is provided by Red Hat Lightspeed in Satellite. 
 
@@ -118,12 +118,12 @@ image::lb1187_M1_Connectivity.png[link=self, window=blank, width=100%]
 [%collapsible]
 ====
 
-One of the most common questions about Red Hat Lightspeed has to do with the data collected, so the Red Hat Lightspeed team wanted to include a brief discussion on data collection and security information. +
+One of the most common questions about Red Hat Lightspeed has to do with the data collected, so the Red Hat Lightspeed team provided the below information on data collection and security information. +
 
 Red Hat Lightspeed on the https://console.redhat.com/[Red Hat Hybrid Cloud Console^] is considered a connected experience and requires that a small amount of data (around 500 kb on average) is sent to Red Hat for analysis.  If you want to know more about what is collected, please ask one of our instructors or visit the https://www.redhat.com/en/technologies/management/insights/data-application-security[Red Hat Lightspeed data and application security page^] (specifically the article on https://access.redhat.com/articles/1598863[System Information Collected by Red Hat Lightspeed^]) for more details.
 
 This page also will tell you how to do things like obfuscate data or perform a collection for inspection to see everything that Red Hat Lightspeed collects. +
-It should be reiterated that you have complete control over what information Red Hat Lightspeed for RHEL gathers - while we have exposed the hostname and IP addresses of the systems in the lab, this information is easily obfuscated via a switch in the client.   Additional information can also be obfuscated including keywords, patterns, and specific files.
+It should be reiterated that you have complete control over what information Red Hat Lightspeed for RHEL gathers - while the lab has exposed the hostname and IP addresses of the systems, this information is easily obfuscated via a switch in the client.   Additional information can also be obfuscated including keywords, patterns, and specific files.
 
 Additional information can be found in the http://redhat.com/insightsfaq[Red Hat Lightspeed frequently asked questions document^].
 
