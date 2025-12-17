@@ -23,6 +23,7 @@ Please complete each section in order.
 .Log in to the Hybrid Cloud Console
 [%collapsible]
 ====
+If you still have the Hybrid Cloud Console open from the previous module, skip to step #2 in the next section.
 
 If you do not already have it open from the previous module, please use a web browser to navigate to the https://console.redhat.com[Hybrid Cloud Console^] . +
 Log into the Hybrid Cloud Console with the following credentials: +
@@ -64,7 +65,7 @@ This page is showing you the SCAP policies in your environment. +
 
 4. Select RHEL9.
 
-5. In the `Policy type` box type “CIS”
+5. Near the `Policy type` box in the `Filter by policy name` search bar, type *CIS*
 
 6. Select the radio button to the left of “CIS Red Hat Enterprise Linux 9 Benchmark for Level 1 - Server”.
 
@@ -79,7 +80,7 @@ NOTE: SCAP policies have dependencies on the version of RHEL.  Notice the `Suppo
 7. Click Next.
 8. Provide a policy name of: *{guid} CIS L1 Server Policy* 
 
-NOTE: Please name the policy as shown above. This will help with automated cleanup tasks.  
+NOTE: Please replace the default policy name with  the policy name as shown above. This helps you find your policy in later steps and will help with automated cleanup tasks.  
 
 [start=9]
 9. Optionally you can enter a description or business objective.  
@@ -95,8 +96,9 @@ NOTE: Please only add your host to this policy.
 13. Click Next.
 14. In the `Rules` section of the wizard you can tailor your policy.  This means that you can customize the policy by unselecting rules or editing values.  + 
 One place where Infinicorp is more strict than the policy is that the maximum password age at Infinicorp is 45 days.  You need to tailor the policy to reflect this. 
-15. In the `Name` filter enter: *Set Existing Passwords Maximum Age*
-16. Expand the resulting rule so that you can see the details. Scroll down to where you see the `Depends on values` as shown in the image below.
+15. Next to the `Name` filter in the `Filter by name` box enter: *Set Existing Passwords Maximum Age*
+16. Expand the resulting rule so that you can see the details. +
+Scroll down to where you see the `Depends on values` as shown in the image below.
 
 .Tailoring Max Age value
 image::lb1187_M3_Tailor_Max_Age.png[link=self, window=blank, width=100%]
@@ -117,6 +119,8 @@ We could have simply unchecked the rule if we didn’t want to evaluate this rul
 21. Click `Return to application` to close the wizard.  In the list of policies you should see your newly created policies.  Use the filter by name and search for `{guid}` if you have issues locating it. +
 
 With your policy created and tailored you are ready to move onto the next step - evaluate the RHEL host against your newly created policy. 
+
+NOTE: It is suggested to leave your Hybrid Cloud Console tab or window open as you will need it in a future section.
 
 ====
 =====
@@ -150,7 +154,7 @@ Running the `insights-client --compliance` command will use OpenSCAP to scan the
 .Evaluating compliance status
 image::lb1187_M3_EvaluateCompliance.png[../assets/lb1187_M3_EvaluateCompliance]
 
-NOTE: While the regular `insights-client` command runs daily as a systemd process, the `--compliance` command is not included in that daily run.  Once you deploy this on your systems you will want to schedule this to run on a recurring basis using cron or similar.  This is covered in more detail in the https://docs.redhat.com/en/documentation/red_hat_lightspeed/1-latest/html-single/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index#setting-recurring-scans_compliance-getting-started[documentation].
+NOTE: While the regular `insights-client` command runs daily as a systemd process, the `--compliance` command is not included in that daily run.  Once you deploy this on your systems you will want to schedule this to run on a recurring basis using cron or similar.  This is covered in more detail in the https://docs.redhat.com/en/documentation/red_hat_lightspeed/1-latest/html-single/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index#setting-recurring-scans_compliance-getting-started[documentation^].
 
 Do not continue to the next step until this command has completed and returns to the terminal prompt as shown in the image above. This process can take anywhere from 1-5 minutes.
 
@@ -173,7 +177,7 @@ If you closed the page, click this https://console.redhat.com/insights/complianc
 2. Locate (do not click) your policy. It may help to use the filter at the top to locate your policy. +
 Your policy should be named `{guid} CIS L1 Server Policy`.
 
-NOTE: If you did not run `insights-client --compliance` in the previous step, or if the operation is still in progress, your policy will not display here.  Policies do not display reports until at least one system is reporting.
+NOTE: If you did not run `insights-client --compliance` in the previous section, or if the operation is still in progress, your policy will not display here.  Policies do not display reports until at least one system is reporting.
 
 [start=3]
 3. The report will show you at a glance the name of the policy, the operating system, and the compliance rate.  You should be 100% compliant.  
@@ -194,8 +198,8 @@ Starting in the upper left, we have 100% of systems compliant to the policy.  +
 The only conditions that are showing are compliant and non-compliant, but there are several possible conditions: +
 
 * `Compliant` - Passing with the specified threshold percentage
-* `Non-compliant` - not passing with the specified threshold percentage
-* `Unsupported` - If a system is using a version of the SCAP Security Guide (SSG) that is either too old OR too new, the system will report itself as unsupported.  There is a https://access.redhat.com/articles/6644131[full support matrix available].
+* `Non-compliant` - Not passing with the specified threshold percentage
+* `Unsupported` - If a system is using a version of the SCAP Security Guide (SSG) that is either too old OR too new, the system will report itself as unsupported.  There is a https://access.redhat.com/articles/6644131[full support matrix available^].
 * `Not reporting` - The system is assigned to the policy, but has not yet been evaluated for compliance.   
 
 The last two conditions are not displayed since you don’t have any systems in those conditions (compliant and non-compliant are always shown). +
@@ -204,7 +208,7 @@ It is common for someone for example to `dnf upgrade` and update the ssg package
 That latest version may not be compatible with an older version of RHEL and the results can be deceptive. + 
 Rather than giving a deceptive or potentially incorrect score, the compliance report will report as unsupported while still giving you a rules failed number. +
 
-`Not reporting` is also a huge help in large environments - If you have 5000 systems that you expect to be help to the CIS policy and only 4990 are reporting it might otherwise be difficult to know that those last 10 systems aren’t being scanned.  +
+`Not reporting` is also a huge help in large environments - If you have 5000 systems that you expect to be held to the CIS policy and only 4990 are reporting it might otherwise be difficult to know that those last 10 systems aren’t being scanned.  +
 The compliance report will tell you if a system isn’t reporting.  +
 There are also tabs below for `Reporting` and `Never reported` where you can easily get a list of these systems. 
 
@@ -274,14 +278,20 @@ NOTE: If you miss the pop up, in the left hand navigation bar you can click Auto
 
 [start=14]
 14. While looking at your remediation plan you created, you have a couple of options in the upper right. +
-The `Execute` button is unavailable.  Your user in this lab does not have permission to execute remediation.  No user gets this permission by default - it has to be explicitly provided, *With so many people taking this lab at the same time we have opted to not enable this feature.*  An interactive demo was shared at the end of module 2 that shows how this works. +
+The `Execute` button is unavailable.  Your user in this lab does not have permission to execute remediation.  No user gets this permission by default - it has to be explicitly provided. +
+*With so many people taking this lab at the same time we have opted to not enable this feature.*  +
+An interactive demo was shared at the end of module 2 that shows how this works. +
 
 .System Details
 image::lb1187_M3_RemediationPlan.png[../assets/lb1187_M3_RemediationPlan]
 
 [start=15]
 15. Click the Download button. +
-The playbook is downloaded via your browser.  To view the playbook you will need to locate the downloaded file then open the .yml file in a text editor.
+The playbook is downloaded via your browser.  
+
+NOTE: The exact steps may vary per browser, in chrome you click save to save the file. 
+
+To view the playbook you will need to locate the downloaded file then open the .yml file in a text editor.
 
 This playbook can help simplify the resolution of this issue - you could easily adapt this to run via ansible automation or sync this playbook with Ansible Automation Platform (AAP) - this is covered in the AAP documentation but we are not covering it in this lab. +
 
