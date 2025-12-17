@@ -177,6 +177,28 @@ You should go ahead and create a playbook that you can evaluate and send to the 
 image::selected-hosts.png[]
 
 [start=4]
+. With a host selected, both the `Remediate` and the `Download playbook` buttons become available. +
+These playbooks are created by Red Hat and are supported, but it is always best to review the playbook first to see what it is doing and determine if any modifications are needed. +
+
+. Click `Download playbook`. +
+Depending on your browser, additional selections may be needed to download the .yml file.  
+
+. Locate and open the playbook. +
+The .yml file should open with any text editor. +
+Review the playbook. +
+Notice that there are signatures included to help identify that the playbook was created by Red Hat. +
+The playbook is generally pretty simple and does the following: +
+* Update ClientAliveInterval setting to 300
+* Update ClientMaxAlive setting to 0
+* Restarts the sshd service so the service accepts the updated values
+* Runs the `insights-client` command to identify the issue has been fixed and to remove the recommendation.
+
+This playbook is very simple, and Infinicorp has already approved you running Red Hat provided playbooks in the Satellite test environment. +
+This playbook is safe for you to run.
+
+When you have finished reviewing, close the playbook and return to the Satellite UI.
+
+[start=7]
 . Click the `Remediate` button. +
 This will open a window that will summarize the recommendation, the resolution (or resolution options if there is more than one way to resolve the issue), and will let you know if a reboot of the system is needed. +
 In this case the default resolution is to set the ClientMaxAlive and ClientAliveInterval values to best practice settings and then restart the sshd service.  These steps do not require a reboot. +
@@ -187,8 +209,8 @@ This will redirect you to Monitor → Jobs where you can see the job running tha
 image::remediation-status.png[link=self, window=blank, width=100%]
 
 
-[start=5]
-5. Return to the list of Red Hat Lightspeed recommendations. +
+[start=9]
+. Return to the list of Red Hat Lightspeed recommendations. +
 In the left hand navigation bar, click Red Hat Lightspeed -> Recommendations. +
 You should notice that the `Decreased security: OpenSSH ClientAlive settings` recommendation no longer appears.
 
