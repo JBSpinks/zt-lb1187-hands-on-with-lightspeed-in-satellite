@@ -17,7 +17,7 @@ Please complete each section in order.
 ====
 
 
-Please use a web browser to navigate to the https://console.redhat.com[Hybrid Cloud Console^] . +
+Please use a web browser to navigate to the https://console.redhat.com[Hybrid Cloud Console^] <-- Click to open in new tab. +
 Log into the Hybrid Cloud Console with the following credentials: +
 
 User:
@@ -96,6 +96,11 @@ As you’re logged into Red Hat Lightspeed, an urgent instant message arrives fr
 
 SecOps was just made aware of https://access.redhat.com/errata/RHSA-2025:22790[RHSA-2025:22790] which is a vulnerability that affects WebKitGTK. As many as 18 CVEs are associated with this patch and SecOps wants to know if we have any systems with this vulnerability.  There are multiple CVEs on this issue, one such CVE number is   `CVE-2025-43458`.
 SecOps has asked for a report of how many systems are impacted by `CVE-2025-43458` as soon as possible. 
+
+In the previous section you left off where you were viewing the default filters.
+
+.Vulnerability Filters
+image::Vuln_DefaultFilters.png[link=self, window=blank, width=100%]
 
 From the vulnerability page the default filter is `CVE` (located to the right of the empty checkbox in the image above).  You can type the CVE number in the search box OR even a common search term that might be present in the CVE description like `GTK`.   +
 
@@ -192,7 +197,7 @@ NOTE: The following steps are for Conventional (RPM-DNF) based systems.  Immutab
 You can add this fix to an existing playbook or you can create a new playbook.  Red Hat Lightspeed defaults to `Create new playbook` which is what you are going to use. +
    
 [start=3]
-3. Name your playbook: *43458 fix {guid} *
+3. Name your playbook: *43458 fix {guid}*
 
 Reminder: your system name is: `rhel-{guid}-1.lab`
 
@@ -214,19 +219,22 @@ At the bottom of the wizard there is a link that will allow you to `Open playboo
 For context, in the left hand navigation bar you have just been redirected to `Automation Toolkit → Remediation Plans`.
 
 From the remediations page, while looking at your remediation plan you created, you have a couple of options in the upper right. +
-The `Execute` button is unavailable.  Your user in this lab does not have permission to execute remediation.  No user gets this permission by default - it has to be explicitly provided, *With so many people taking this lab at the same time we have opted to not enable this feature.*  We do have an interactive demo that can show you how this works, end to end that will be at the end of this module. +
+The `Execute` button is unavailable.  Your user in this lab does not have permission to execute remediation.  No user gets this permission by default - it has to be explicitly provided. +
+*With so many people taking this lab at the same time we have opted to not enable this feature.*  +
+We do have an interactive demo that can show you how this works, end to end that will be at the end of this module. +
 
 [start=8]
 8. Click the Download button. +
-The playbook is downloaded via your browser.  To view the playbook you will need to locate the downloaded file then open the .yml file in a text editor.
+The playbook is downloaded via your browser.  The exact steps may vary per browser, in chrome you click save to save the file. +
+To view the playbook you will need to locate the downloaded file then open the .yml file in a text editor.
 
 This playbook can help simplify the resolution of this issue - you could easily adapt this to run via ansible automation or sync this playbook with Ansible Automation Platform (AAP) - this is covered in the AAP documentation but we are not covering it in this lab. +
 
 [start=9]
 9. Close the playbook and return to the Hybrid Cloud Console browser window.
 
-Now that you have both the list of systems affected by CVE-2025-43458 and a remediation playbook you send those back to your SecOps team for their review.  
-Now that this urgent task is taken care of, let’s go ahead and return to the original task of seeing what CVEs need addressed on the RHEL 9.7 host. +
+Now that you have both the list of systems affected by CVE-2025-43458 and a remediation playbook you send those back to your SecOps team for their review. + 
+With that urgent task taken care of, let’s go ahead and return to the original task of seeing what CVEs need addressed on the RHEL 9.7 host. +
 
 (Move onto the next section, but don’t leave this page.) +
 
@@ -259,12 +267,14 @@ Because we are showing you only CVEs with advisories, in the remediation column 
 Locate the CVE filter and click it - this will provide you a list of items you can filter on. +
 
 5. Click `Severity`. +
-6. Click the Filter by severity drop down box. +
-7. Select Critical and Important. +
+6. Click the `Filter by severity` drop down box. +
+7. Select `Critical` and `Important`. +
 When selected this should look like the image below.
 
 .CVE Severity Filter
 image::lb1187_M2_CVESeverity.png[link=self, window=blank, width=100%]
+
+NOTE: you may need to click outside of the filter box to get it to close.
 
 If you just need the list of critical and important CVEs that you can fix - exporting this list will get you what you need. +
 However, sometimes you need a complete list of system vulnerabilities - the CVEs with and without errata. + 
@@ -324,6 +334,10 @@ You should take a look while you’re here. +
 There are three types of reports - an executive report, a customizable CVE report, and a report by operating system versions. +
 2. Start with the executive report - click `Download PDF`. +
 The PDF file will be downloaded via your browser.   +
+
+NOTE: It may take a moment for the report to be generated. The report is downloaded via your browser.  The exact steps may vary per browser, in chrome you click save to save the file. 
+
+[start=3]
 3. Locate and open the report. +
 The executive report shows you a summary of the systems, CVEs, and security rules. +
 The report then breaks down the CVEs by CVSS (Common Vulnerability Scoring System) score, identifies the top 3 CVEs in your environment, and the top 3 security rules. +
@@ -358,6 +372,10 @@ image::lb1187_M2_CVEReport.png[link=self, window=blank, width=100%]
 The PDF file will be downloaded via your browser.   
 3. Locate and open the report. +
 This report will show you the information that you selected - in this case all CVEs with a CVSS base score between 6.0 and 10 within the last 90 days. +
+
+NOTE: It may take a moment for the report to be generated. The report is downloaded via your browser.  The exact steps may vary per browser, in chrome you click save to save the file. 
+
+[start=4]
 4. When finished reviewing, close the report and return to the Hybrid Cloud Console.
 
 (Move onto the next section, but don’t leave this page.) +
@@ -382,11 +400,16 @@ This opens a window where you can identify what you want the report to contain. 
 * Notice that you can filter the `Advisory:Available` option to `Not Available` or All (Select both options).  This would allow you to report on CVEs without errata.  Leave this as the default of All. 
 * If desired, add user notes about the report. 
 * You can export to PDF or CSV.  Click `Export PDF`.
-* The report will take several seconds to generate.  Once done, click `Save`.
+* The report will be downloaded via your browser.
+
+NOTE: It may take a moment for the report to be generated. The report is downloaded via your browser.  The exact steps may vary per browser, in chrome you click save to save the file. 
+
+[start=3]
 3. Locate and open the report.
 4. Notice that the report will show you the CVEs reported for the specific minor versions of RHEL that you selected. + 
 If you scroll to the second page of the report you can see a graph of the severity breakdown. +
 Unsurprisingly, newer versions of RHEL have less CVEs. +
+5. When finished reviewing, close the report and return to the Hybrid Cloud Console. 
 
 ====
 =====
